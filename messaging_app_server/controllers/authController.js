@@ -1,7 +1,7 @@
 const User = require('../models/userModel');
 const passport = require('passport');
 exports.sign_up = function(req, res, next){
-    const User = new User({
+    const user = new User({
         username: req.body.username,
         password: req.body.password,
     }).save((err) => {

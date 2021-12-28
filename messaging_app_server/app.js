@@ -8,7 +8,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy
 const mongoose = require('mongoose');
 const User = require('./models/userModel')
-
+const cors = require('cors')
 
 const mongoDB = 'mongodb+srv://jacob:Pigpen123@cluster0.owqa8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, {useUnifiedTopology: true, useNewUrlParser: true});
@@ -53,7 +53,7 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
-
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
